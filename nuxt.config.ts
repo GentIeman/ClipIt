@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/ui',
     '@pinia/nuxt',
-    '@nuxtjs/strapi'
+    '@nuxtjs/strapi',
+    '@nuxt/eslint',
   ]
 })
