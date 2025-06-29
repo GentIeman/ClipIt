@@ -8,5 +8,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/strapi',
     '@nuxt/eslint',
-  ]
+  ],
+  css: ['~/assets/css/main.css']
 })
