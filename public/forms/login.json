@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sign in",
+  "description": "Scheme of the login form",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "size": "lg"
+    },
+    "password": {
+      "type": "string",
+      "label": "Password",
+      "placeholder": "Enter password",
+      "size": "lg"
+    },
+    "required": [
+      "email",
+      "password"
+    ]
+  }
+}
