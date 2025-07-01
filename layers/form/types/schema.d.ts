@@ -14,6 +14,7 @@ declare global {
 
     interface ISchemaProperties {
         type: string
+        name: string
         label: string
         placeholder: string
         size: SchemaPropertiesSize
