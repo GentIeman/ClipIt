@@ -6,12 +6,14 @@
   "properties": {
     "email": {
       "type": "string",
+      "name": "email",
       "label": "Email",
       "placeholder": "Enter your email",
       "size": "lg"
     },
     "password": {
       "type": "string",
+      "name": "password",
       "label": "Password",
       "placeholder": "Enter password",
       "size": "lg"
