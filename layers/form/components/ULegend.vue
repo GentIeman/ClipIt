@@ -1,13 +1,10 @@
 <template>
-  <legend v-bind="props">{{text}}</legend>
+  <legend>{{text}}</legend>
 </template>
 
 <script setup lang="ts">
 
-const props = defineProps<{
-  text: string,
-  class: string
-}>()
+defineProps<{ text: string }>()
 
 </script>
 
