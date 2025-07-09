@@ -1,0 +1,27 @@
+{
+  "legend": "Sign in",
+  "fields": [
+    {
+      "name": "email",
+      "label": "Email",
+      "placeholder": "mail@example.com",
+      "size": "lg"
+    },
+    {
+      "name": "password",
+      "label": "Password",
+      "placeholder": "Enter password",
+      "size": "lg"
+    }
+  ],
+  "button": {
+    "label": "Sign in",
+    "block": true,
+    "size": "lg",
+    "type": "submit"
+  },
+  "required": [
+    "email",
+    "password"
+  ]
+}
