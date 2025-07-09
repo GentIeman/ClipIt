@@ -20,6 +20,8 @@ import UInputPassword from "~/layers/form/components/UInputPassword.vue";
 import {UInput} from "#components";
 import type {FormsCollectionItem} from "@nuxt/content";
 
+// @TODO сделать схему валидации на zod
+
 const props = defineProps<{
   state: Object
   schema: FormsCollectionItem
