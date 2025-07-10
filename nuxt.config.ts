@@ -13,5 +13,10 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   extends: [
       "./layers/form"
-  ]
+  ],
+  app: {
+    head: {
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+    }
+  }
 })
