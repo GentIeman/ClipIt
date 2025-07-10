@@ -9,7 +9,8 @@
           :state="state"
           :schema="form"
           class="grid gap-4 h-fit"
-          :validation-schema="validationSchema"/>
+          :validation-schema="validationSchema"
+          @submit="sign(state)"/>
       <UContainer class="lg:px-0">
         <USeparator label="or"/>
         {{ isSignIn ? "I don't have an": "I have an" }}
@@ -44,6 +45,18 @@ const state = reactive({
 })
 
 const validationSchema = computed(() => isSignIn.value ? signInSchema : signUpSchema)
+
+const sign = async (payload: typeof state) => {
+  const router = useRouter()
+
+  const { login: _login, register } = useStrapiAuth()
+
+  await (isSignIn.value
+      ? _login({ identifier: payload.email, ...payload })
+      : register({ ...payload }))
+
+  await router.push("/")
+}
 </script>
 
 <style scoped>
