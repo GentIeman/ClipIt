@@ -37,7 +37,7 @@ const props = defineProps<{
   validationSchema: object
 }>()
 
-const localState = ref<typeof props.state>(props.state)
+const localState = reactive(props.state)
 
 const componentMap: Record<string, Component> = {
   "password": UInputPassword,
