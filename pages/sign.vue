@@ -38,9 +38,9 @@ const {data: form, refresh} = useAsyncData("form",
 watch(isSignIn, () => refresh())
 
 const state = reactive({
-  email: undefined,
-  password: undefined,
-  username: undefined,
+  email: "",
+  password: "",
+  username: "",
 })
 
 const validationSchema = computed(() => isSignIn.value ? signInSchema : signUpSchema)
