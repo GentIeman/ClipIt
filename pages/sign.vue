@@ -52,7 +52,7 @@ const sign = async (payload: typeof state) => {
   const { login: _login, register } = useStrapiAuth()
 
   await (isSignIn.value
-      ? _login({ identifier: payload.email, ...payload })
+      ? _login({ identifier: payload.email, password: payload.password })
       : register({ ...payload }))
 
   await router.push("/")
