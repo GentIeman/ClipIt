@@ -1,7 +1,7 @@
 <template>
   <UInput
-      class="w-full"
       v-model="password"
+      class="w-full"
       placeholder="Password"
       :type="show ? 'text' : 'password'"
       :ui="{ trailing: 'pe-1' }"
