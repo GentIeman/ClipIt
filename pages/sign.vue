@@ -26,7 +26,24 @@
 </template>
 
 <script setup lang="ts">
+import {signInSchema, signUpSchema} from "#layers/form/validators/authRules";
 
+const isSignIn = ref<boolean>(true)
+const {data: form, refresh} = useAsyncData("form",
+    () => queryCollection('forms')
+        .where("stem", "=", `forms/${isSignIn.value ? "signIn" : "signUp"}`)
+        .select("button", "fields", "legend")
+        .first()
+)
+watch(isSignIn, () => refresh())
+
+const state = reactive({
+  email: undefined,
+  password: undefined,
+  username: undefined,
+})
+
+const validationSchema = computed(() => isSignIn.value ? signInSchema : signUpSchema)
 </script>
 
 <style scoped>
