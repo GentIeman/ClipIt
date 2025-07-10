@@ -1,0 +1,36 @@
+{
+  "legend": "Sign Up",
+  "fields": [
+    {
+      "type": "text",
+      "name": "username",
+      "label": "Username",
+      "placeholder": "Your username",
+      "size": "lg",
+      "required": true
+    },
+    {
+      "type": "email",
+      "name": "email",
+      "label": "Email",
+      "placeholder": "mail@example.com",
+      "size": "lg",
+      "autocomplete": true,
+      "required": true
+    },
+    {
+      "type": "password",
+      "name": "password",
+      "label": "Password",
+      "placeholder": "Enter password",
+      "size": "lg",
+      "required": true
+    }
+  ],
+  "button": {
+    "label": "Sign Up",
+    "block": true,
+    "size": "lg",
+    "type": "submit"
+  }
+}
