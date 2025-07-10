@@ -23,8 +23,7 @@ export default defineContentConfig({
                     block: z.boolean(),
                     size: z.enum(["sm", "md", "lg"]),
                     type: z.enum(["submit", "button"]),
-                }),
-                required: z.array(z.string())
+                })
             })
         }),
     }
