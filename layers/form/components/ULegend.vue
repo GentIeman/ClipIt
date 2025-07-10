@@ -1,5 +1,7 @@
 <template>
-  <legend>{{text}}</legend>
+  <fieldset>
+    <legend>{{text}}</legend>
+  </fieldset>
 </template>
 
 <script setup lang="ts">
