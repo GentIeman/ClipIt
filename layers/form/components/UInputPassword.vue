@@ -1,6 +1,5 @@
 <template>
   <UInput
-      v-model="password"
       class="w-full"
       placeholder="Password"
       :type="show ? 'text' : 'password'"
@@ -23,7 +22,6 @@
 
 <script setup lang="ts">
 const show = ref(false)
-const password = ref('')
 </script>
 
 <style scoped>
