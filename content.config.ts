@@ -9,10 +9,13 @@ export default defineContentConfig({
                 legend: z.string(),
                 fields: z.array(
                     z.object({
+                        type: z.string(),
                         name: z.string(),
                         label: z.string(),
                         placeholder: z.string(),
-                        size: z.enum(["sm", "md", "lg"])
+                        size: z.enum(["sm", "md", "lg"]),
+                        autocomplete: z.boolean(),
+                        required: z.boolean()
                     })
                 ),
                 button: z.object({
