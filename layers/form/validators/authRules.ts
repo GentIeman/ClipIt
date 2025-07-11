@@ -19,9 +19,9 @@ export const signUpSchema = yup.object({
         .min(6, "Username must be at least 6 characters long"),
     email: yup
         .string()
+        .required('Email is required')
         .min(6, "Email must be at least 6 characters long")
-        .email('Please enter a valid email address')
-        .required('Email is required'),
+        .email('Please enter a valid email address'),
     password: yup
         .string()
         .required('Password is required')
