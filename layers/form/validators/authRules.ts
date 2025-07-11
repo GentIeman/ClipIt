@@ -4,26 +4,26 @@ export const signInSchema = yup.object({
     email: yup
         .string()
         .email('Please enter a valid email address')
-        .min(6, "Email must be at least 6 characters long")
-        .required('Email is required'),
+        .required('Email is required')
+        .min(6, "Email must be at least 6 characters long"),
     password: yup
         .string()
-        .min(6, 'Password must be at least 6 characters long')
         .required('Password is required')
+        .min(6, 'Password must be at least 6 characters long')
 });
 
 export const signUpSchema = yup.object({
     username: yup
         .string()
-        .min(6, "Username must be at least 6 characters long")
-        .required('Username is required'),
+        .required('Username is required')
+        .min(6, "Username must be at least 6 characters long"),
     email: yup
         .string()
+        .required('Email is required')
         .min(6, "Email must be at least 6 characters long")
-        .email('Please enter a valid email address')
-        .required('Email is required'),
+        .email('Please enter a valid email address'),
     password: yup
         .string()
-        .min(6, 'Password must be at least 6 characters long')
         .required('Password is required')
+        .min(6, 'Password must be at least 6 characters long')
 });
