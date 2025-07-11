@@ -1,14 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { checkRequiredFields } from '../../utils/requiredFieldChecks'
 
 type RegisterPayload = { email: string; password: string; username: string };
-
-function checkRequiredFields(payload: RegisterPayload, fields: string[]) {
-    for (const field of fields) {
-        if (!payload[field as keyof RegisterPayload]) {
-            throw new Error('All required fields must be filled');
-        }
-    }
-}
 
 function signUpFactory({ useStrapiAuth, useRouter }: {
     useStrapiAuth: () => {
