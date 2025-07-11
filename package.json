@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:eslint": "eslint . --ext .ts,.vue,.mjs,.js"
+    "lint:eslint": "eslint . --ext .ts,.vue,.mjs,.js",
+    "test": "vitest run --reporter=verbose"
   },
   "dependencies": {
     "@nuxt/content": "^3.6.1",
@@ -25,6 +26,10 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.4.1"
+    "@nuxt/eslint": "^1.4.1",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^18.0.1",
+    "playwright-core": "^1.54.0",
+    "vitest": "^3.2.4"
   }
 }
