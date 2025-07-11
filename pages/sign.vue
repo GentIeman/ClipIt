@@ -61,7 +61,6 @@ const sign = async (payload: typeof state) => {
 
     await router.push("/")
   } catch (error: unknown) {
-    console.error(error)
 
     errorToast(error as Strapi5Error, {
       orientation: "horizontal",
