@@ -2,7 +2,6 @@
   "legend": "Sign Up",
   "fields": [
     {
-      "type": "text",
       "name": "username",
       "label": "Username",
       "placeholder": "Your username",
@@ -10,7 +9,6 @@
       "required": true
     },
     {
-      "type": "email",
       "name": "email",
       "label": "Email",
       "placeholder": "mail@example.com",
@@ -19,7 +17,6 @@
       "required": true
     },
     {
-      "type": "password",
       "name": "password",
       "label": "Password",
       "placeholder": "Enter password",

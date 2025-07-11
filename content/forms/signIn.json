@@ -2,7 +2,6 @@
   "legend": "Sign In",
   "fields": [
     {
-      "type": "email",
       "name": "email",
       "label": "Email",
       "placeholder": "mail@example.com",
