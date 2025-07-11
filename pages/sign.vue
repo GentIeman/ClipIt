@@ -27,7 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import {signInSchema, signUpSchema} from "#layers/form/validators/authRules";
+import {signInSchema, signUpSchema} from "~/layers/form/validators/authRules";
+import {useNotification} from "~/layers/ui/composables/useNotification";
+import type {Strapi5Error} from "@nuxtjs/strapi";
 
 const isSignIn = ref<boolean>(true)
 const {data: form, refresh} = useAsyncData("form",
@@ -48,14 +50,30 @@ const validationSchema = computed(() => isSignIn.value ? signInSchema : signUpSc
 
 const sign = async (payload: typeof state) => {
   const router = useRouter()
+  const {errorToast} = useNotification()
 
   const { login: _login, register } = useStrapiAuth()
 
-  await (isSignIn.value
-      ? _login({ identifier: payload.email, password: payload.password })
-      : register({ ...payload }))
+  try {
+    await (isSignIn.value
+        ? _login({ identifier: payload.email, password: payload.password })
+        : register({ ...payload }))
 
-  await router.push("/")
+    await router.push("/")
+  } catch (error: unknown) {
+    console.error(error)
+
+    errorToast(error as Strapi5Error, {
+      orientation: "horizontal",
+      color: "error",
+      icon: "i-bi-exclamation-circle"
+    }, async () => await sign(payload), {
+      icon: "i-lucide-refresh-cw",
+      label: "Retry",
+      color: "neutral",
+      variant: "outline"
+    })
+  }
 }
 </script>
 
