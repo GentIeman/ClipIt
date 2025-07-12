@@ -8,7 +8,7 @@
           @click="$router.push('/')"/>
       <UContainer class="flex items-center px-0">
         <UNavigationMenu
-            :items="navigetionMenuItems"
+            :items="navigationMenuItems"
             class="w-full justify-center"/>
         <UButton
             label="New Bookmark"
@@ -38,10 +38,11 @@
 <script setup lang="ts">
 import type {DropdownMenuItem, NavigationMenuItem} from '@nuxt/ui'
 
-const navigetionMenuItems = ref<NavigationMenuItem[]>([
+const navigationMenuItems = ref<NavigationMenuItem[]>([
   {
     label: 'Bookmarks',
     icon: 'i-lucide-bookmark',
+    to: '/bookmarks',
   },
   {
     label: 'Collections',
