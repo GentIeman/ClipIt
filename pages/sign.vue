@@ -74,6 +74,10 @@ const sign = async (payload: typeof state) => {
     })
   }
 }
+
+definePageMeta({
+  layout: "sign"
+})
 </script>
 
 <style scoped>
