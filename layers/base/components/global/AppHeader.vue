@@ -42,6 +42,7 @@ const navigetionMenuItems = ref<NavigationMenuItem[]>([
   {
     label: 'Bookmarks',
     icon: 'i-lucide-bookmark',
+    to: '/bookmarks',
   },
   {
     label: 'Collections',
