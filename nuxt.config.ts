@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     css: ['~/assets/css/main.css'],
     extends: [
         "./layers/form",
-        "./layers/ui"
+        "./layers/ui",
+        "./layers/base",
     ],
     app: {
         head: {
