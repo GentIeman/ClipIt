@@ -8,7 +8,7 @@ export const useBookmarkStore = defineStore('bookmarkStore', {
         bookmarks: []
     }),
     actions: {
-        fetchBookmarks: async (user: StrapiUser ) => {
+        async fetchBookmarks(user: StrapiUser) {
             const {find} = useStrapi()
             if (!user?.id) throw new Error('User ID not defined')
 
