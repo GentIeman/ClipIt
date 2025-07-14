@@ -17,7 +17,9 @@ export const useBookmarkStore = defineStore('bookmarkStore', {
                 const {data} = await find<IBookmark>('bookmarks', {
                     fields: ['title', 'description', 'createdAt', "link"],
                     populate: {
-                        preview: true,
+                        preview: {
+                            fields: ['url', 'width', 'height']
+                        },
                         user: {
                             fields: ['id']
                         },
