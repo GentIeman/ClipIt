@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import type {StrapiUser} from "@nuxtjs/strapi";
 
-export const useBookmarksStore = defineStore('bookmarks', {
+export const useBookmarkStore = defineStore('bookmarkStore', {
     state: (): {
         bookmarks: IBookmark[]
     } => ({
