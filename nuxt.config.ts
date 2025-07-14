@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         "./layers/form",
         "./layers/ui",
         "./layers/base",
+        "./layers/bookmarks",
     ],
     app: {
         head: {
