@@ -32,8 +32,9 @@ export const useBookmarkStore = defineStore('bookmarkStore', {
                     }
                 })
 
-                console.log(data)
 
+                if (!data) return false
+                this.bookmarks = data
 
             } catch (error) {
                 console.error('Error fetching bookmarks:', error)
