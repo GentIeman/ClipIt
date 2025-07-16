@@ -6,9 +6,16 @@ declare global {
         title: string
         description?: string
         link: string
-        preview?: string
+        preview?: IPreview
         createdAt: string
         users: StrapiUser
+    }
+
+    interface IPreview {
+        documentId: string
+        url: string
+        width: number
+        height: number
     }
 }
 
