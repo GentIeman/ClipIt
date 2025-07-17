@@ -3,9 +3,11 @@
     <template #header>
       <img
           v-if="bookmark.preview?.url"
-          :src="bookmark.preview?.url"
+          :src="media + bookmark.preview?.url"
           alt="Bookmark Image"
-          class="w-full h-32 object-cover rounded-t-lg">
+          :width="bookmark.preview?.width"
+          :height="bookmark.preview?.height"
+          class="object-fill rounded-lg">
     </template>
     <div class="grid gap-2">
       <h3 class="text-xl">{{ bookmark.title }}</h3>
@@ -25,6 +27,8 @@
 const props = defineProps<{
   bookmark: IBookmark
 }>()
+
+const media = useStrapiMedia("/")
 
 const linkBadgeLabel = computed(() => {
   return props.bookmark.link.replace(/^https?:\/\//, '')
