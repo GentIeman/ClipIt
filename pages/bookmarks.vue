@@ -1,6 +1,12 @@
 <template>
   <main>
-    <div class="fixed bottom-0 w-full grid sm:hidden place-items-center my-3">
+    <UContainer class="grid grid-cols-[repeat(auto-fill,_minmax(340px,_1fr))] gap-4">
+      <BookmarkCard
+          v-for="bookmark in bookmarks"
+          :key="bookmark.documentId"
+          :bookmark="bookmark"/>
+    </UContainer>
+    <UContainer class="fixed bottom-0 w-full grid sm:hidden place-items-center my-3">
       <UButton
           label="New Bookmark"
           color="primary"
@@ -8,11 +14,18 @@
           leading-icon="i-lucide-plus"
           variant="solid"
       />
-    </div>
+    </UContainer>
   </main>
 </template>
 
 <script setup lang="ts">
+import {useBookmarkStore} from "~/layers/bookmarks/stores/bookmarks";
+
+const bookmarkStore = useBookmarkStore()
+const {bookmarks} = storeToRefs(bookmarkStore)
+const user = useStrapiUser()
+
+await callOnce('bookmarks', () => bookmarkStore.fetchBookmarks(user.value))
 definePageMeta({
   middleware: ['auth'],
 })
