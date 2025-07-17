@@ -7,7 +7,7 @@
           alt=""
           :width="bookmark.preview?.width"
           :height="bookmark.preview?.height"
-          class="object-fill rounded-lg">
+          class="object-cover rounded-lg">
     </template>
     <div class="grid gap-2">
       <h3 class="text-xl">{{ bookmark.title }}</h3>
