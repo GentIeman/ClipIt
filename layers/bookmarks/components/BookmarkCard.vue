@@ -4,7 +4,7 @@
       <img
           v-if="bookmark.preview?.url"
           :src="media + bookmark.preview?.url"
-          alt="Bookmark Image"
+          alt=""
           :width="bookmark.preview?.width"
           :height="bookmark.preview?.height"
           class="object-fill rounded-lg">
