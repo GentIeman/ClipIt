@@ -1,6 +1,6 @@
 <template>
   <main>
-    <UContainer class="grid grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))]">
+    <UContainer class="grid grid-cols-[repeat(auto-fill,_minmax(340px,_1fr))] gap-4">
       <BookmarkCard
           v-for="bookmark in bookmarks"
           :key="bookmark.documentId"
