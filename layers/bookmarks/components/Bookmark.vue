@@ -1,9 +1,10 @@
 <template>
   <UCard>
-    <template #header>
+    <template
+        v-if="viewChecks.isCards"
+        #header>
       <img
-          v-if="bookmark.preview?.url"
-          :src="media + bookmark.preview?.url"
+          :src="mediaPath + bookmark.preview?.url"
           alt=""
           :width="bookmark.preview?.width"
           :height="bookmark.preview?.height"
@@ -11,7 +12,9 @@
     </template>
     <div class="grid gap-2">
       <h3 class="text-xl">{{ bookmark.title }}</h3>
-      <p class="text-neutral-500 line-clamp-3"> {{ bookmark.description }}</p>
+      <p
+          v-if="viewChecks.isCardsOrLines"
+          class="text-neutral-500 line-clamp-3"> {{ bookmark.description }}</p>
       <div class="flex gap-3">
         <UBadge
             :label="linkBadgeLabel"
@@ -23,12 +26,14 @@
 </template>
 
 <script setup lang="ts">
-
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   bookmark: IBookmark
-}>()
+  view?: BookmarkView
+}>(), {
+  view: 'cards'
+})
 
-const media = useStrapiMedia("/")
+const mediaPath = useStrapiMedia("/")
 
 const linkBadgeLabel = computed(() => {
   return props.bookmark.link.replace(/^https?:\/\//, '')
@@ -41,6 +46,11 @@ const formattedCreatedAt = computed(() => {
     day: "2-digit",
   }).format(new Date(props.bookmark.createdAt))
 })
+
+const viewChecks = computed(() => ({
+  isCards: ['cards'].includes(props.view),
+  isCardsOrLines: ['cards', 'lines'].includes(props.view),
+}));
 
 </script>
 

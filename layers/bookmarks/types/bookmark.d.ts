@@ -17,6 +17,8 @@ declare global {
         width: number
         height: number
     }
+
+    type BookmarkView = "cards" | "list" | "headlines"
 }
 
 export {}

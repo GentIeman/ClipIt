@@ -1,9 +1,15 @@
 <template>
   <main>
-    <UContainer class="grid grid-cols-[repeat(auto-fill,_minmax(340px,_1fr))] gap-4">
-      <BookmarkCard
+    <UContainer
+        class="grid gap-4"
+        :class="{
+          'grid-cols-[repeat(auto-fill,minmax(min(100%,350px),1fr))]': ['cards'].includes(viewMode),
+        }">
+      <Bookmark
           v-for="bookmark in bookmarks"
           :key="bookmark.documentId"
+          as="article"
+          :view="viewMode"
           :bookmark="bookmark"/>
     </UContainer>
     <UContainer class="fixed bottom-0 w-full grid sm:hidden place-items-center my-3">
@@ -29,6 +35,9 @@ await callOnce('bookmarks', () => bookmarkStore.fetchBookmarks(user.value))
 definePageMeta({
   middleware: ['auth'],
 })
+
+// temporary solution to switch between view modes
+const viewMode: BookmarkView = 'cards'
 </script>
 
 <style scoped>
