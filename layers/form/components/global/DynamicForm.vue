@@ -4,6 +4,7 @@
       :state="localState"
       :schema="validationSchema">
     <ULegend
+        v-if="schema.legend"
         :text="schema.legend"
         class="block text-center text-xl font-bold"/>
     <UFormField
