@@ -32,7 +32,7 @@ import {UInput} from "#components";
 import type {FormsCollectionItem} from "@nuxt/content";
 
 const props = defineProps<{
-  state: Record<string, string | undefined | null>
+  state: Record<string, string | undefined | null | number>
   schema: Pick<FormsCollectionItem, "button" | "fields" | "legend">
   validationSchema: object
 }>()
