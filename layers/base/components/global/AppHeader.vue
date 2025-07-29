@@ -10,14 +10,7 @@
         <UNavigationMenu
             :items="navigationMenuItems"
             class="w-full justify-center"/>
-        <UButton
-            label="New Bookmark"
-            color="primary"
-            class="hidden lg:inline-flex"
-            size="md"
-            leading-icon="i-lucide-plus"
-            variant="solid"
-        />
+        <AddBookmarkModal class="hidden sm:inline-flex"/>
       </UContainer>
       <UDropdownMenu
           :items="dropDownMenuItems"
@@ -37,6 +30,7 @@
 
 <script setup lang="ts">
 import type {DropdownMenuItem, NavigationMenuItem} from '@nuxt/ui'
+import AddBookmarkModal from "#layers/ui/components/AddBookmarkModal.vue";
 
 const navigationMenuItems = ref<NavigationMenuItem[]>([
   {
