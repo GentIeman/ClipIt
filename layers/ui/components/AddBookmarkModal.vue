@@ -30,7 +30,7 @@ const state = reactive({
   user: user.value?.id
 })
 
-const {data: form} = useAsyncData("form",
+const {data: form} = useAsyncData("bookmarkForm",
     () => queryCollection('forms')
         .where("stem", "=", "forms/bookmark")
         .select("button", "fields")
