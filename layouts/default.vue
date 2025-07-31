@@ -8,5 +8,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import AddBookmarkModal from "#layers/ui/components/AddBookmarkModal.vue";
+import AddBookmarkModal from "~/layers/bookmarks/components/AddBookmarkModal.vue";
 </script>

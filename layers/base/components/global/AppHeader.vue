@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import type {DropdownMenuItem, NavigationMenuItem} from '@nuxt/ui'
-import AddBookmarkModal from "#layers/ui/components/AddBookmarkModal.vue";
+import AddBookmarkModal from "~/layers/bookmarks/components/AddBookmarkModal.vue";
 
 const navigationMenuItems = ref<NavigationMenuItem[]>([
   {
