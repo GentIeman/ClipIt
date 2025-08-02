@@ -31,7 +31,7 @@ import {useLinkPreview} from "~/layers/bookmarks/composables/useLinkPreview";
 
 const user = useStrapiUser()
 
-const state = reactive({
+const state = shallowReactive({
   link: "",
   user: user.value?.id
 })
