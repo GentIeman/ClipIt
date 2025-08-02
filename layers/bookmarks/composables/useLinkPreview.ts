@@ -2,7 +2,6 @@ import { shallowRef } from 'vue'
 
 export function useLinkPreview() {
     const preview = shallowRef<ILinkPreview | null>(null)
-    const isLoading = shallowRef(false)
     const error = shallowRef<Error | null>(null)
 
     const getMetaContent = (doc: Document, selector: string) => {
@@ -11,7 +10,6 @@ export function useLinkPreview() {
     }
 
     const fetchPreview = async (url: string) => {
-        isLoading.value = true
         error.value = null
 
         try {
@@ -31,8 +29,6 @@ export function useLinkPreview() {
             }
         } catch (err) {
             error.value = err as Error
-        } finally {
-            isLoading.value = false
         }
     }
 
@@ -43,7 +39,6 @@ export function useLinkPreview() {
 
     return {
         preview,
-        isLoading,
         error,
         fetchPreview,
         reset
