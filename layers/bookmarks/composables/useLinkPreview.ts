@@ -1,14 +1,7 @@
 import { shallowRef } from 'vue'
 
-interface LinkPreview {
-    title: string | null
-    description: string | null
-    image: string | null
-    siteName: string | null
-}
-
 export function useLinkPreview() {
-    const preview = shallowRef<LinkPreview | null>(null)
+    const preview = shallowRef<ILinkPreview | null>(null)
     const isLoading = shallowRef(false)
     const error = shallowRef<Error | null>(null)
 
