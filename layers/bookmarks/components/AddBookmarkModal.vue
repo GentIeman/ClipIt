@@ -10,18 +10,24 @@
         variant="solid"
     />
     <template #body>
-      <DynamicForm
-          v-if="form"
-          class="grid gap-4 h-fit"
-          :state="state"
-          :validation-schema="bookmarkSchema"
-          :schema="form"/>
+      <div class="grid gap-3">
+        <LinkPreview
+            v-if="preview"
+            :preview="preview"/>
+        <DynamicForm
+            v-if="form"
+            class="grid gap-4 h-fit"
+            :state="state"
+            :validation-schema="bookmarkSchema"
+            :schema="form"/>
+      </div>
     </template>
   </UModal>
 </template>
 
 <script setup lang="ts">
 import {bookmarkSchema} from "~/layers/bookmarks/validators/bookmarkRules";
+import {useLinkPreview} from "~/layers/bookmarks/composables/useLinkPreview";
 
 const user = useStrapiUser()
 
@@ -37,6 +43,12 @@ const {data: form} = useAsyncData("bookmarkForm",
         .first()
 )
 
+const {preview, fetchPreview, reset} = useLinkPreview()
+
+watch(() => state.link, (link) => {
+  if (link.length < 1) reset()
+  fetchPreview(link)
+})
 </script>
 
 <style scoped>
