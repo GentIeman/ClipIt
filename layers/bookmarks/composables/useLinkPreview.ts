@@ -1,4 +1,4 @@
-import { shallowRef } from 'vue'
+import { shallowRef, toValue } from 'vue'
 
 export function useLinkPreview() {
     const preview = shallowRef<ILinkPreview | null>(null)
@@ -11,9 +11,10 @@ export function useLinkPreview() {
 
     const fetchPreview = async (url: string) => {
         error.value = null
+        const targetUrl = toValue(url)
 
         try {
-            const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
+            const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`)
             const data = await response.json()
             const html = data.contents
 
