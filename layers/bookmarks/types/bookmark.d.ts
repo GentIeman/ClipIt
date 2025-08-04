@@ -12,7 +12,7 @@ declare global {
     }
 
     interface IPreview {
-        documentId: string
+        documentId: string | null
         url: string
         width: number
         height: number
