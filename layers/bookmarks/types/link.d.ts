@@ -1,9 +1,9 @@
 declare global {
 
     interface ILinkPreview {
-        title: string | null
+        title: string
         description: string | null
-        image: string | null
+        image?: IPreview
         siteName: string | null
     }
 
