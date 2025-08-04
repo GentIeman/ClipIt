@@ -3,7 +3,7 @@ declare global {
     interface ILinkPreview {
         title: string
         description: string | null
-        image?: IPreview
+        image: string | null
         siteName: string | null
     }
 
