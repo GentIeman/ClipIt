@@ -45,9 +45,9 @@ const {data: form} = useAsyncData("bookmarkForm",
 
 const {preview, fetchPreview, reset} = useLinkPreview()
 
-watch(() => state.link, (link) => {
+watch(() => state.link, async (link) => {
   if (link.length < 1) reset()
-  fetchPreview(link)
+  await fetchPreview(link)
 })
 </script>
 
