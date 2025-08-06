@@ -19,7 +19,8 @@
             class="grid gap-4 h-fit"
             :state="state"
             :validation-schema="bookmarkSchema"
-            :schema="form"/>
+            :schema="form"
+            @submit="createBookmark"/>
       </div>
     </template>
   </UModal>
@@ -28,12 +29,14 @@
 <script setup lang="ts">
 import {bookmarkSchema} from "~/layers/bookmarks/validators/bookmarkRules";
 import {useLinkPreview} from "~/layers/bookmarks/composables/useLinkPreview";
+import {useNotification} from "~/layers/ui/composables/useNotification";
+import type {Strapi5Error} from "@nuxtjs/strapi";
 
 const user = useStrapiUser()
 
 const state = shallowReactive({
   link: "",
-  user: user.value?.id
+  userId: user.value?.id
 })
 
 const {data: form} = useAsyncData("bookmarkForm",
@@ -49,6 +52,26 @@ watch(() => state.link, async (link) => {
   if (link.length < 1) reset()
   await fetchPreview(link)
 })
+
+const createBookmark = async () => {
+  const {create} = useStrapi()
+  const {errorToast} = useNotification()
+
+  try {
+      await create<IBookmark>("bookmarks", {
+        title: preview.value?.title,
+        description: preview.value?.description,
+        link: state.link,
+        user: state.userId,
+      })
+  } catch (error: unknown) {
+    errorToast(error as Strapi5Error, {
+      orientation: "horizontal",
+      color: "error",
+      icon: "i-bi-exclamation-circle"
+    })
+  }
+}
 </script>
 
 <style scoped>
