@@ -12,6 +12,8 @@ export function useLinkPreview() {
     const fetchPreview = async (url: string) => {
         error.value = null
 
+        if (!url) return
+
         if (url.length < 1) {
             resetPreview()
             return
