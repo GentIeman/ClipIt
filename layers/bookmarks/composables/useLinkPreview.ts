@@ -32,7 +32,7 @@ export function useLinkPreview() {
         }
     }
 
-    const reset = () => {
+    const resetPreview = () => {
         preview.value = null
         error.value = null
     }
@@ -41,6 +41,5 @@ export function useLinkPreview() {
         preview,
         error,
         fetchPreview,
-        reset
     }
 }
