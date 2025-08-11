@@ -12,6 +12,11 @@ export function useLinkPreview() {
     const fetchPreview = async (url: string) => {
         error.value = null
 
+        if (url.length < 1) {
+            resetPreview()
+            return
+        }
+
         try {
             const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
             const data = await response.json()
