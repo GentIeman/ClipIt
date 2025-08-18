@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import {useBookmarkStore} from "~/layers/bookmarks/stores/bookmarks";
+import {useBookmarkStore} from "~/layers/bookmark/stores/bookmarks";
 
 const bookmarkStore = useBookmarkStore()
 const {bookmarks} = storeToRefs(bookmarkStore)
