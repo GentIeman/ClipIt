@@ -6,7 +6,7 @@ export default defineContentConfig({
             type: 'data',
             source: 'forms/*.json',
             schema: z.object({
-                legend: z.string(),
+                legend: z.string().optional(),
                 fields: z.array(
                     z.object({
                         type: z.string(),

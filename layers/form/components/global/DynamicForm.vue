@@ -4,6 +4,7 @@
       :state="localState"
       :schema="validationSchema">
     <ULegend
+        v-if="schema.legend"
         :text="schema.legend"
         class="block text-center text-xl font-bold"/>
     <UFormField
@@ -32,7 +33,7 @@ import {UInput} from "#components";
 import type {FormsCollectionItem} from "@nuxt/content";
 
 const props = defineProps<{
-  state: Record<string, string | undefined | null>
+  state: Record<string, string | undefined | null | number>
   schema: Pick<FormsCollectionItem, "button" | "fields" | "legend">
   validationSchema: object
 }>()

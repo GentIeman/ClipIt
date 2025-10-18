@@ -12,20 +12,11 @@
           :view="viewMode"
           :bookmark="bookmark"/>
     </UContainer>
-    <UContainer class="fixed bottom-0 w-full grid sm:hidden place-items-center my-3">
-      <UButton
-          label="New Bookmark"
-          color="primary"
-          size="md"
-          leading-icon="i-lucide-plus"
-          variant="solid"
-      />
-    </UContainer>
   </main>
 </template>
 
 <script setup lang="ts">
-import {useBookmarkStore} from "~/layers/bookmarks/stores/bookmarks";
+import {useBookmarkStore} from "~/layers/bookmark/stores/bookmarks";
 
 const bookmarkStore = useBookmarkStore()
 const {bookmarks} = storeToRefs(bookmarkStore)

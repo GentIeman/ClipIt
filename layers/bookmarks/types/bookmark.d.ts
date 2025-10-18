@@ -2,17 +2,17 @@ import type {StrapiUser} from "@nuxtjs/strapi";
 
 declare global {
     interface IBookmark {
-        documentId: string
+        documentId: string | null
         title: string
-        description?: string
+        description: string | null
         link: string
-        preview?: IPreview
+        preview: IPreview
         createdAt: string
-        users: StrapiUser
+        user: StrapiUser | StrapiUser["id"]
     }
 
     interface IPreview {
-        documentId: string
+        documentId: string | null
         url: string
         width: number
         height: number
