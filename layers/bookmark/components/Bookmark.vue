@@ -26,6 +26,8 @@
 </template>
 
 <script setup lang="ts">
+export type BookmarkView = "cards" | "list" | "headlines"
+
 const props = withDefaults(defineProps<{
   bookmark: IBookmark
   view?: BookmarkView
