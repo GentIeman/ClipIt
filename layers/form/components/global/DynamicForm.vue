@@ -32,8 +32,10 @@ import UInputPassword from "~/layers/form/components/UInputPassword.vue";
 import {UInput} from "#components";
 import type {FormsCollectionItem} from "@nuxt/content";
 
+export type FormState = Record<string, string | undefined | null | number>
+
 const props = defineProps<{
-  state: Record<string, string | undefined | null | number>
+  state: FormState
   schema: Pick<FormsCollectionItem, "button" | "fields" | "legend">
   validationSchema: object
 }>()
