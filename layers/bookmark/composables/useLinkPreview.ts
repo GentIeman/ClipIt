@@ -1,7 +1,8 @@
 import { shallowRef } from 'vue'
+import type {LinkPreview} from "~/layers/bookmark/components/LinkPreview.vue"
 
 export function useLinkPreview() {
-    const preview = shallowRef<ILinkPreview | null>(null)
+    const preview = shallowRef<LinkPreview | null>(null)
     const error = shallowRef<Error | null>(null)
 
     const getMetaContent = (doc: Document, selector: string) => {
