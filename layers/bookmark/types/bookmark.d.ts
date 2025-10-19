@@ -10,15 +10,6 @@ declare global {
         createdAt: string
         user: StrapiUser | StrapiUser["id"]
     }
-
-    interface IPreview {
-        documentId: string | null
-        url: string
-        width: number
-        height: number
-    }
-
-    type BookmarkView = "cards" | "list" | "headlines"
 }
 
 export {}

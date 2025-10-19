@@ -11,7 +11,15 @@
 </template>
 
 <script setup lang="ts">
+
+export type LinkPreview = {
+  title: string
+  image: string | null
+  description: string | null
+  siteName: string | null
+}
+
 defineProps<{
-  preview: ILinkPreview
+  preview: LinkPreview
 }>()
 </script>
