@@ -24,5 +24,10 @@ export default defineNuxtConfig({
     routeRules: {
         '/': {redirect: '/bookmarks'}
     },
+    runtimeConfig: {
+        public: {
+            strapiOrigin: ""
+        }
+    },
     ssr: false
 })
