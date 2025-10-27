@@ -10,7 +10,7 @@
           :schema="form"
           class="grid gap-4 h-fit"
           :validation-schema="validationSchema"
-          @submit="sign(state)"/>
+          @submit="sign"/>
       <UContainer class="lg:px-0">
         <USeparator label="or"/>
         {{ isSignIn ? "I don't have an": "I have an" }}
@@ -28,8 +28,9 @@
 
 <script setup lang="ts">
 import {signInSchema, signUpSchema} from "~/layers/form/validators/authRules";
-import {useNotification} from "~/layers/ui/composables/useNotification";
-import type {Strapi5Error} from "@nuxtjs/strapi";
+import {useAuth} from "~/layers/user/composables/useAuth"
+
+const {login, register} = useAuth()
 
 const isSignIn = ref<boolean>(true)
 const {data: form, refresh} = useAsyncData("form",
@@ -48,30 +49,19 @@ const state = reactive({
 
 const validationSchema = computed(() => isSignIn.value ? signInSchema : signUpSchema)
 
-const sign = async (payload: typeof state) => {
+const sign = async () => {
   const router = useRouter()
-  const {errorToast} = useNotification()
-
-  const { login: _login, register } = useStrapiAuth()
 
   try {
-    await (isSignIn.value
-        ? _login({ identifier: payload.email, password: payload.password })
-        : register({ ...payload }))
-
+    await (
+        isSignIn.value
+            ? login(state.email, state.password)
+            : register(state.email, state.password, state.username)
+    )
     await router.push("/")
-  } catch (error: unknown) {
 
-    errorToast(error as Strapi5Error, {
-      orientation: "horizontal",
-      color: "error",
-      icon: "i-bi-exclamation-circle"
-    }, async () => await sign(payload), {
-      icon: "i-lucide-refresh-cw",
-      label: "Retry",
-      color: "neutral",
-      variant: "outline"
-    })
+  } catch (e) {
+    console.log(e)
   }
 }
 
