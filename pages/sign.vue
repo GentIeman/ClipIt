@@ -33,7 +33,7 @@ import {useAuth} from "~/layers/user/composables/useAuth"
 const {login, register} = useAuth()
 
 const isSignIn = ref<boolean>(true)
-const {data: form, refresh} = useAsyncData("form",
+const {data: form, refresh} = useAsyncData("signForm",
     () => queryCollection('forms')
         .where("stem", "=", `forms/${isSignIn.value ? "signIn" : "signUp"}`)
         .select("button", "fields", "legend")
