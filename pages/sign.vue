@@ -5,9 +5,9 @@
     </p>
     <UContainer class="grid gap-4 p-10 w-lg h-fit rounded-xl border border-neutral-700 backdrop-blur-md">
       <DynamicForm
-          v-if="form"
+          v-if="schema"
           :state="state"
-          :schema="form"
+          :schema="schema"
           class="grid gap-4 h-fit"
           :validation-schema="validationSchema"
           @submit="sign"/>
@@ -33,7 +33,7 @@ import {useAuth} from "~/layers/user/composables/useAuth"
 const {login, register} = useAuth()
 
 const isSignIn = ref<boolean>(true)
-const {data: form, refresh} = useAsyncData("signForm",
+const {data: schema, refresh} = useAsyncData("signForm",
     () => queryCollection('forms')
         .where("stem", "=", `forms/${isSignIn.value ? "signIn" : "signUp"}`)
         .select("button", "fields", "legend")
