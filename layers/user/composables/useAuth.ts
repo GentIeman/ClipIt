@@ -1,5 +1,6 @@
 import type {Response as LoginResponse} from "~/layers/user/server/api/login.post"
 import type {Response as RegisterResponse} from "~/layers/user/server/api/register.post"
+import type {Response as MeResponse} from "~/layers/user/server/api/me.get"
 
 export const useAuth = () => {
     const user = useUser();
@@ -30,5 +31,17 @@ export const useAuth = () => {
         user.value = response.user
     };
 
-    return {login, register};
+    const me = async () => {
+        const requestFetch = useRequestFetch()
+        const response = await requestFetch<MeResponse>('/api/me', {
+            // async onResponseError({ response } ) {
+            //     console.log(response._data.data.error.status)
+            //     console.log(response._data.data.error.message)
+            // }
+        })
+
+        user.value = response.user
+    };
+
+    return {login, register, me};
 };
