@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "bun run nuxt build",
-    "dev": "bun run nuxt dev",
+    "dev": "bun run nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -28,5 +28,9 @@
     "happy-dom": "^18.0.1",
     "playwright-core": "^1.54.0",
     "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "@nuxt/cli": "3.28.0",
+    "_comment": "https://github.com/nuxt/cli/issues/1081"
   }
 }
