@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
 
     if (!user) return null
 
-    setCookie(event, "jwtToken", jwt, {
+    setCookie(event, "strapi_jwt", jwt, {
         httpOnly: true,
         priority: "high",
         secure: process.env.NODE_ENV === "production",
