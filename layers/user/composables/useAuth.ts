@@ -41,12 +41,7 @@ export const useAuth = () => {
 
     const me = async () => {
         const requestFetch = useRequestFetch()
-        const response = await requestFetch<MeResponse>('/api/me', {
-            // async onResponseError({ response } ) {
-            //     console.log(response._data.data.error.status)
-            //     console.log(response._data.data.error.message)
-            // }
-        })
+        const response = await requestFetch<MeResponse>('/api/me')
 
         user.value = response.user
     };
