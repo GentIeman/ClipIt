@@ -4,11 +4,11 @@ export default defineNuxtRouteMiddleware(async (to, _from) => {
 
     const {me} = useAuth()
 
-    if (!user.value) {
-        await me()
-    }
-
-    if (!user.value) {
+    try {
+        if (!user.value) {
+            await me()
+        }
+    } catch (e) {
         useCookie('redirect', { path: '/', httpOnly: true, secure: true, sameSite: 'strict' }).value = to.fullPath
         return navigateTo('/sign')
     }
