@@ -9,10 +9,14 @@ export const useAuth = () => {
         const response = await $fetch<LoginResponse>("/api/login", {
             method: "POST",
             body: {identifier, password},
-            // async onResponseError({ response } ) {
-            //     console.log(response._data.data.error.status)
-            //     console.log(response._data.data.error.message)
-            // }
+            onResponseError({ response } ) {
+                const toast = useToast()
+                toast.add({
+                    title: "Trouble signing in?",
+                    description: response._data.data.error.message,
+                    color: "error"
+                })
+            }
         });
 
         user.value = response.user
@@ -22,10 +26,14 @@ export const useAuth = () => {
         const response = await $fetch<RegisterResponse>("/api/register", {
             method: "POST",
             body: {email, password, username},
-            // async onResponseError({ response } ) {
-            //     console.log(response._data.data.error.status)
-            //     console.log(response._data.data.error.message)
-            // }
+            async onResponseError({ response } ) {
+                const toast = useToast()
+                toast.add({
+                    title: " Oops, something went wrong!",
+                    description: response._data.data.error.message,
+                    color: "error"
+                })
+            }
         });
 
         user.value = response.user
@@ -33,12 +41,7 @@ export const useAuth = () => {
 
     const me = async () => {
         const requestFetch = useRequestFetch()
-        const response = await requestFetch<MeResponse>('/api/me', {
-            // async onResponseError({ response } ) {
-            //     console.log(response._data.data.error.status)
-            //     console.log(response._data.data.error.message)
-            // }
-        })
+        const response = await requestFetch<MeResponse>('/api/me')
 
         user.value = response.user
     };
