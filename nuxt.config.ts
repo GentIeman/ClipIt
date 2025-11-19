@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     css: ['~/assets/css/main.css'],
     extends: [
         "./layers/form",
-        "./layers/ui",
         "./layers/base",
         "./layers/bookmark",
     ],
